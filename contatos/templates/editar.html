@@ -1,0 +1,62 @@
+{% extends 'base.html' %}
+{% block corpo %}
+<h1><i class="large material-icons">edit</i> Editando: {{edit_contato.nome}}</h1>
+
+<hr>
+
+<form action="" method="POST" class="was-validated">
+  {% csrf_token %}
+
+  <div class="form-group">
+    <label for="nome">Nome</label><br>
+    <input class="form-control" value="{{edit_contato.nome}}" type="text" name="nome" id="nome" required>
+  </div>
+
+  <div class="form-group">
+    <label for="endereco">Endereço</label><br>
+    <input class="form-control" value="{{edit_contato.endereco}}" type="text" name="endereco" id="endereco" required>
+  </div>
+
+  <div class="form-group">
+    <label for="celular">Celular</label><br>
+    <input class="form-control" value={{edit_contato.celular}} type="number" name="celular" id="celular" required>
+  </div>
+
+  <div class="form-group">
+    <label for="email">E-mail</label><br>
+    <input class="form-control" value={{edit_contato.email}} type="email" name="email" id="email" required>
+  </div>
+
+  <div class="form-group">
+    <label for="data_nascimento">Data de nascimento</label><br>
+    <input class="form-control" type="date" value="{{string_data}}" name="data_nascimento" id="data_nascimento" required>
+  </div>
+
+  <div class="form-group">
+    <label for="sexo">Sexo</label><br>
+    <select name="sexo" id="sexo" class="form-control">
+      {% ifequal edit_contato.sexo "F"  %}
+        <option value="F" selected>F</option>
+        <option value="M">M</option>
+      {% else %}
+        <option value="F">F</option>
+        <option value="M" selected>M</option>
+      {% endifequal %}
+    </select>
+  </div>
+
+  <hr>
+
+  <div class="d-flex justify-content-between">
+    <a href="/lista/" class="btn btn-outline-secondary" role="button">
+      <div class="d-flex align-items-center">
+        <i class="material-icons">arrow_back</i>Voltar
+      </div>
+    </a>
+
+    <button type="submit" class="btn btn-primary btn-submit">
+      Confirmar
+    </button>
+  </div>
+</form>
+{% endblock %}

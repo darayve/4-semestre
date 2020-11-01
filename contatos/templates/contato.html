@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+{% block corpo %}
+  <h1>{{contato.nome}}</h1>
+
+  <hr>
+
+  <h3>Informações de contato</h3><br>
+
+  <ul class="list-group">
+    <li class="list-group-item">
+      <h5>Endereço</h5>
+      <p>{{contato.endereco}}</p>
+    </li>
+
+    <li class="list-group-item">
+      <h5>E-mail</h5>
+      <p>{{contato.email}}</p>
+    </li>
+
+    <li class="list-group-item">
+      <h5>Celular</h5>
+      <p>{{contato.celular}}</p>
+    </li>
+
+    <li class="list-group-item">
+      <h5>Data de nascimento</h5>
+      <p>{{contato.data_nascimento|date:'d/m/Y'}}</p>
+    </li>
+
+    <li class="list-group-item">
+      <h5>Sexo</h5>
+      {% ifequal contato.sexo "F"%}
+        <p>Feminino</p>
+      {% else %}
+        <p>Masculino</p>
+      {% endifequal %}
+    </li>
+  </ul>
+
+  <hr>
+  
+  <div class="d-flex justify-content-between align-items-center">
+    <a href="/lista/" class="btn btn-outline-secondary" role="button">
+      <div class="d-flex align-items-center">
+        <i class="material-icons">arrow_back</i>Voltar
+      </div>
+    </a>
+    
+    <a href="/editar/{{contato.id}}" class="btn btn-warning" role="button">
+      <div class="d-flex align-items-center">
+        <i class="material-icons">edit</i>Editar
+      </div>
+    </a>
+  </div>
+  
+{% endblock %}

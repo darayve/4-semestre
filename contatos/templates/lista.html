@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% block corpo %}
+
+<h1>Lista de contatos</h1>
+
+<hr>
+
+<ul class="list-group">
+    {% for contato in lista_contatos %}
+    <li class="list-group-item">
+        <div class="d-flex justify-content-between">
+            <a href="/contato/{{contato.id}}">
+                <h5>{{contato.nome}}</h5>
+                Celular: {{contato.celular}}
+            </a>
+
+            <div class="row">
+                <a href="/editar/{{contato.id}}" class="btn btn-warning my-auto">Editar</a>
+                <a href="/remover/{{contato.id}}" class="btn btn-danger my-auto" style="margin: 0 15px;">Deletar</a>
+            </div>
+        </div>
+    </li>
+    {% empty %}
+    <li class="list-group-item">Sem itens na lista</li>
+    {% endfor %}
+</ul><br>
+
+<a href="/add/" class="btn btn-info d-flex justify-content-around" role="button">
+  <div class="d-flex align-items-center">
+    <i class="material-icons">add</i>Novo contato
+  </div>
+</a>
+{% endblock corpo %}
