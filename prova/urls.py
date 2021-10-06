@@ -3,6 +3,7 @@ from django.urls import path
 from contatos.views import lista, add, contato, editar, remover
 
 urlpatterns = [
+    path('', lista),
     path('admin/', admin.site.urls),
     path('lista/', lista),
     path('add/', add),
